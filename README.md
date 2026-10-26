@@ -13,11 +13,6 @@
 
 ---
 
-## ⚡ 1-Click Cloud & Container Deploy
-
-Deploy ScamShield OSS instantly to **DigitalOcean App Platform** or run locally via Docker:
-
-[![Deploy to DigitalOcean](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new)
 
 ```bash
 # Run the hermetic, air-gapped production Docker container:
