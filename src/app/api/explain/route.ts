@@ -58,7 +58,36 @@ FORMAT YOUR RESPONSE IN STRICT JSON:
 }`;
 
     // -----------------------------------------------------------------
-    // 100% LOCAL INFERENCE: Local Ollama Server (http://localhost:11434)
+    // 1. BOUND INTERNAL SERVICE: FastAPI Python Backend (BACKEND_URL)
+    // Injected by Vercel Services binding at runtime
+    // -----------------------------------------------------------------
+    const backendBaseUrl = process.env.BACKEND_URL;
+    if (backendBaseUrl) {
+      try {
+        const backendRes = await fetch(new URL('/api/v1/explain', backendBaseUrl), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text,
+            risk_score: riskScore,
+            risk_level: riskLevel,
+            indicators,
+            model: customModel,
+          }),
+          signal: AbortSignal.timeout(6000),
+        });
+
+        if (backendRes.ok) {
+          const backendData = await backendRes.json();
+          return NextResponse.json(backendData);
+        }
+      } catch (backendErr) {
+        console.warn('Bound backend service unreachable, trying local Ollama / heuristics:', backendErr);
+      }
+    }
+
+    // -----------------------------------------------------------------
+    // 2. 100% LOCAL INFERENCE: Local Ollama Server (http://localhost:11434)
     // -----------------------------------------------------------------
     try {
       const ollamaTagsRes = await fetch('http://localhost:11434/api/tags', {
