@@ -1,0 +1,45 @@
+name: 🚨 Submit New Scam Pattern
+description: Report a newly observed scam message, phishing URL, or smishing template
+title: "[Scam Pattern]: "
+labels: ["enhancement", "threat-intelligence"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 🔒 Privacy Notice
+        **DO NOT include private personal data!** Please redact personal phone numbers, OTPs, real names, and bank account details (replace with `[REDACTED]` or `XXXX`).
+
+  - type: dropdown
+    id: scam_type
+    attributes:
+      label: Threat Category
+      description: What type of cyber fraud is this?
+      options:
+        - "Bank / KYC Impersonation (SBI, HDFC, etc.)"
+        - "Task-Based Work-From-Home / YouTube Like Scam"
+        - "Prize Bait / Lottery / Gift Voucher"
+        - "Courier / Delivery Parcel Pending (India Post, FedEx)"
+        - "Electricity Bill Disconnection Threat"
+        - "Phishing URL / Domain Typosquatting"
+        - "Cryptocurrency / Investment Multiplier Scam"
+        - "Other Deceptive Vector"
+    validations:
+      required: true
+
+  - type: textarea
+    id: sample_text
+    attributes:
+      label: Redacted Sample Message or URL
+      description: Provide the exact message text or domain (ensure personal info is redacted).
+      placeholder: "Dear customer, your account will be suspended within 24 hours due to pending KYC..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: trigger_words
+    attributes:
+      label: Key Deceptive Keywords or Patterns
+      description: Which specific words or domain structures make this deceptive?
+      placeholder: "Urgency: 'within 24 hours', URL: '.xyz domain', Brand: fake SBI"
+    validations:
+      required: true

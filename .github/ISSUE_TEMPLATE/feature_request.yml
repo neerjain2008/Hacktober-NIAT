@@ -1,0 +1,21 @@
+name: ✨ Feature Request
+description: Propose an idea, new scanner, or architectural improvement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Context
+      description: Is your feature request related to a specific limitation or emerging threat?
+      placeholder: "I've noticed emerging QR code fraud that bypasses text analysis..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe what you would like ScamShield to do.
+    validations:
+      required: true

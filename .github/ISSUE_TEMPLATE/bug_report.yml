@@ -1,0 +1,38 @@
+name: 🐛 Bug Report
+description: Report unexpected behavior, incorrect threat scores, or UI issues
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what went wrong.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can someone reproduce this behavior?
+      placeholder: |
+        1. Open ScamShield on localhost:3000
+        2. Paste message "..."
+        3. Click "Analyse Now"
+        4. See unexpected error / score
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Operating Environment
+      options:
+        - "Chrome / Chromium"
+        - "Firefox"
+        - "Safari (macOS / iOS)"
+        - "Docker Container"
+        - "FastAPI Python Backend"
+    validations:
+      required: true

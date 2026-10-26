@@ -1,0 +1,6 @@
+# ==============================================================================
+# ScamShield OSS - Root Python Backend Requirements
+# Mirror of backend/requirements.txt for repository-level virtual environments
+# ==============================================================================
+
+-r backend/requirements.txt
